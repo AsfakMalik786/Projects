@@ -1,0 +1,58 @@
+// Create a database
+use CareerNavigator;
+
+// Create a collection for users
+db.createCollection("Users");
+
+// Insert a sample user
+db.Users.insertOne({
+    FirstName: "John",
+    LastName: "Doe",
+    Email: "john.doe@example.com",
+    Password: "hashedPassword"
+});
+
+// Create a collection for resumes
+db.createCollection("Resumes");
+
+// Insert a sample resume for the user
+db.Resumes.insertOne({
+    UserID: ObjectId("65a74de60ddff15f887dca99"),
+    Title: "Software Developer",
+    Experience: "3 years of experience in web development",
+    Skills: ["JavaScript", "HTML", "CSS", "Node.js"]
+});
+
+// Create a collection for networking
+db.createCollection("Networking");
+
+// Insert a sample networking profile for the user
+db.Networking.insertOne({
+    UserID: ObjectId("65a74de60ddff15f887dca99"),
+    Platform: "LinkedIn",
+    Username: "john-doe",
+    URL: "https://www.linkedin.com/in/john-doe/"
+});
+
+//for job insert
+db.jobs.insert({
+  title: "Software Engineer",
+  description: "Exciting software engineering opportunity...",
+  company: "TechCo",
+  location: "Cityville"
+})
+
+db.jobs.insert({
+  title: "Data Scientist",
+  description: "Exciting data science opportunity...",
+  company: "DataCo",
+  location: "Datatown"
+})
+
+//for update
+
+db.jobs.update(
+  { company: "DataCo" },
+  { $set: { location: "NewDatatown" } },
+  { multi: true }
+)
